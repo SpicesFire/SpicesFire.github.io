@@ -123,7 +123,8 @@ header, footer {
     }
 
     .centered-form {
-        width: 100%;
+        width: 90%; /* Formu biraz sağa kaydırmak için genişliği azaltın */
         max-width: 100%;
+        margin-left: 10%; /* Formu sağa kaydırmak için sol marj ekleyin */
     }
 }
