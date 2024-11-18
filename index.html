@@ -47,7 +47,6 @@
 
     <!-- EmailJS ve JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="javascript/java.js"></script>
     <script>
         // EmailJS başlatma
         emailjs.init("Td9eO_7vcwjoM5orS"); // Public API anahtarınızı buraya yazın
@@ -75,12 +74,12 @@
             }
 
             // EmailJS ile formu gönder
-            emailjs.sendForm('service_g8x2rg6', 'template_wy01kmr', this)
+            emailjs.sendForm('service_id', 'template_id', this)
                 .then(function(response) {
-                    alert('Sipariş başarıyla oluşturuldu!');
+                    alert('Form başarıyla gönderildi!');
                     document.getElementById("orderForm").reset();  // Formu sıfırla
                 }, function(error) {
-                    alert('Sipariş gönderilirken bir hata oluştu.');
+                    alert('Form gönderilirken bir hata oluştu.');
                 });
         });
 
@@ -88,7 +87,6 @@
         window.onload = function() {
             document.getElementById("orderForm").reset();
         };
-        
     </script>
     <footer>
         <p>© 2024 CoraxLedLighting Tüm Hakları Saklıdır.</p>
