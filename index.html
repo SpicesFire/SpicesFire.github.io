@@ -1,58 +1,97 @@
-<html>
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-    <link rel="shortcut icon" href="ffavicon.ico" type="image/x-icon">
-    
-    <title>Kerem Aydın Güven</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoraX Led Lighting</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
+<body>
+    <!-- Ana içerik ve yan barlar -->
+    <div class="container">
+        <!-- Sol yan bar -->
+        <div class="sidebar left-sidebar"></div>
 
-<h1>Market Bölümü</h1>
+        <!-- Ana içerik -->
+        <div class="main-content">
+            <!-- Tam ekran genişlikli resimler -->
+            <img src="img/01.jpg" class="centered-image">
+            <img src="img/siparis.jpg" class="centered-image">
 
-<h2>Raftaki içecekler</h2>
+            <h2 style="text-align: center;">Lütfen aşağıdaki formu eksiksiz doldurunuz.</h2>
+            <h1 style="text-align: center;">Sipariş Formu</h1>
+            <form id="orderForm" class="centered-form">
+                <label>
+                    Adınız Soyadınız:
+                    <input type="text" name="ad" id="ad">
+                </label>
+                <label>
+                    E-posta Adresiniz:
+                    <input type="text" name="eposta" id="eposta">
+                </label>
+                <label>
+                    Telefon Numaranız:
+                    <input type="text" name="telefon" id="telefon">
+                </label>
+                <label>
+                    Adres:
+                    <textarea name="adres" id="adres"></textarea>
+                </label>
+                <button type="submit">Gönder</button>
+            </form>
+        </div>
 
-<ul>
-    <li>Kahve</li>
-    <li>Süt</li>
-    <li>Ayran</li>
-    <li>KanyeWest</li>
-</ul>
+        <!-- Sağ yan bar -->
+        <div class="sidebar right-sidebar"></div>
+    </div>
 
+    <!-- EmailJS ve JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="javascript/java.js"></script>
+    <script>
+        // EmailJS başlatma
+        emailjs.init("Td9eO_7vcwjoM5orS"); // Public API anahtarınızı buraya yazın
 
+        document.getElementById("orderForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Formun varsayılan gönderme işlemini engelle
 
-<body style="background-color: rgb(46, 46, 46);">
+            // Alanları al
+            const ad = document.getElementById("ad").value;
+            const eposta = document.getElementById("eposta").value;
+            const telefon = document.getElementById("telefon").value;
+            const adres = document.getElementById("adres").value;
 
-    <div style="display: flex; align-items: center;">
-        <h2 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Hakkımda</h2>
-        <p style="color:red; margin-left: 10px;">Youtube Kanalım:</p>
-        <a href="https://www.youtube.com/channel/UC4chLDqyjZU-UkqwtaU0vkw" style="margin-left: 5px;">
-          <img src="karakter_kafa.png" alt="kanalım" style="width: 42px; height: 42px;">
-        </a>
-        <p style="color: gold; margin-left: 10px;">GitHub:</p>
-        <a href="https://github.com/SpicesFire" style="margin-left: 5px;">
-          <img src="github-mark-white.png" alt="GitHub" style="width: 42px; height: 42px;">
-        </a>
+            // Alanların boş olup olmadığını kontrol et
+            if (!ad || !eposta || !telefon || !adres) {
+                alert('Lütfen tüm alanları doldurun.');  // Eksik alan varsa uyarı göster
+                return;  // İşlem yapmayı durdur
+            }
 
-        <p style="color: green; margin-left: 10px;">Discord Server:</p>
-        <a href="https://discord.gg/CMuswb2TrN" style="margin-left: 5px;">
-        <img src="discord-mark-black.png" alt="Discord" style="width: 50px;height: 42px;">
-        </a>
+            // Telefon numarasının sadece rakamlardan oluşup oluşmadığını kontrol et
+            const telefonRegex = /^[0-9]+$/;  // Yalnızca rakamlar
+            if (!telefonRegex.test(telefon)) {
+                alert('Lütfen geçerli bir telefon numarası girin.');  // Geçersiz telefon numarası varsa uyarı göster
+                return;  // İşlem yapmayı durdur
+            }
 
-        <p style="color: blue;margin-left: 10px;">İnstagram:</p>
-        <a href="https://www.instagram.com/kerem_aydin_guven/" style="margin-left: 5px;">
-        <img src="instagram-logo.png" alt="instagram" style="width: 42px;height: 42px;">
-        </a>
+            // EmailJS ile formu gönder
+            emailjs.sendForm('service_g8x2rg6', 'template_wy01kmr', this)
+                .then(function(response) {
+                    alert('Sipariş başarıyla oluşturuldu!');
+                    document.getElementById("orderForm").reset();  // Formu sıfırla
+                }, function(error) {
+                    alert('Sipariş gönderilirken bir hata oluştu.');
+                });
+        });
 
-        <p style="color: purple; margin-left: 10px;">Corax Ads</p>
-        <a href="https://www.coraxads.com/index.php/tr/coraxads/" style="margin-left: 5px;">
-        <img src="CoraxAds.png" alt="Corax" style="width: 42px;height: 42px;">
-        </a>
+        // Sayfa yüklendiğinde formu sıfırla
+        window.onload = function() {
+            document.getElementById("orderForm").reset();
+        };
         
-      </div>
-      
-      <div style="text-align: center;"> 
-        
-        <img src="Kanye.jpg" width="400" />
-      </div>
-
-
+    </script>
+    <footer>
+        <p>© 2024 CoraxLedLighting Tüm Hakları Saklıdır.</p>
+    </footer>
 </body>
 </html>

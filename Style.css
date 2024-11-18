@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Konteyner ve düzen */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+/* Yan barlar */
+.sidebar {
+    width: 20%;
+    background-color: #333;
+    height: auto; /* Yan barların içeriğe göre yüksekliği */
+}
+
+.left-sidebar {
+    order: 1;
+}
+
+/* Ana içerik */
+.main-content {
+    width: 60%;
+    order: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sağ yan bar */
+.right-sidebar {
+    order: 3;
+}
+
+/* Fotoğrafları ortalama */
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Formu ortalama */
+.centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+html{scroll-behavior: smooth;}
+.centered-form label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.centered-form input, .centered-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.centered-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.centered-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Genel stiller */
+body {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+header, footer {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+}
+
+.item {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablet için */
+@media (max-width: 768px) {
+    .item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+/* Mobil için */
+@media (max-width: 480px) {
+    .item {
+        flex: 1 1 100%;
+    }
+}
+
+/* Mobil ekranlar için */
+@media (max-width: 768px) {
+    .item {
+        flex: 1 1 calc(50% - 20px); /* Her biri %50 genişlikte olur */
+    }
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Daha dar ekranlar için */
+@media (max-width: 480px) {
+    .item {
+        flex: 1 1 100%; /* Her biri tam genişlikte olur */
+    }
+}
+
+/* Tablet için (max genişlik 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Telefonlar için (max genişlik 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+/* Form stili */
+form {
+    margin-top: 20px;
+    text-align: left;
+    display: inline-block;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
